@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "host": "db",
+  "port": 5432,
+  "username": "postgres",
+  "password": "docker",
+  "database": "apisales",
+  "entities": ["src/modules/**/entities/*.ts"],
+  "migrations": ["./src/shared/infra/database/typeorm/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/database/typeorm/migrations"
+  }
+}
