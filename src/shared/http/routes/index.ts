@@ -1,9 +1,8 @@
 import Router from 'express';
 
-const routes = Router();
+const router = Router();
+import { products } from './product/product.routes';
 
-routes.get('/', (request, response) => {
-  return response.json({ message: 'Hello' });
-});
+router.use('/product', products);
 
-export { routes };
+export { router };
