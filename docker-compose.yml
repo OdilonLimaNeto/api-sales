@@ -10,13 +10,12 @@ services:
     volumes:
       - .:/home/node/app
     depends_on:
-      - db
+      - database
       - redis
 
-  db:
+  database:
     build: .docker/postgres
     container_name: api-sales_db
-    restart: always
     tty: true
     ports:
       - 5432:5432
@@ -24,22 +23,10 @@ services:
       - .docker/dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=apisales
+      - POSTGRES_DB=database
 
   redis:
     image: bitnami/redis:latest
     container_name: api-sales_redis
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: api-sales_pgadmin
-    tty: true
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
-    ports:
-      - 8080:80
-    depends_on:
-      - db
