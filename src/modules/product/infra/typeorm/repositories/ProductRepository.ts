@@ -9,7 +9,6 @@ class ProductRepository implements IProductRepository {
   constructor() {
     this.repository = getRepository(Product);
   }
-
   async create({
     title,
     price,
@@ -18,6 +17,9 @@ class ProductRepository implements IProductRepository {
     const product = await this.repository.create({ title, price, quantity });
     await this.repository.save(product);
     return product;
+  }
+  list(): Promise<Product[]> {
+    return this.repository.find();
   }
   async findByTitle(title: string): Promise<Product | undefined> {
     const titleAlreadyExists = await this.repository.findOne({
