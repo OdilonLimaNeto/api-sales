@@ -1,7 +1,8 @@
+import { Product } from '../infra/typeorm/entities/Product';
 interface ICreateProductDTO {
-  title: string;
-  price: number;
-  quantity: number;
+  title: Product['title'];
+  price: Product['price'];
+  quantity: Product['quantity'];
 }
 
 export { ICreateProductDTO };
