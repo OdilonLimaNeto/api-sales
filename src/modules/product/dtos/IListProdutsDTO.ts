@@ -1,7 +1,8 @@
-interface IListProductsDTO {
-  title: string;
-  price: number;
-  quantity: number;
+import { Product } from '../infra/typeorm/entities/Product';
+interface IListProductsFilterDTO {
+  title?: Product['title'];
+  price?: Product['price'];
+  quantity?: Product['quantity'];
 }
 
-export { IListProductsDTO };
+export { IListProductsFilterDTO };
